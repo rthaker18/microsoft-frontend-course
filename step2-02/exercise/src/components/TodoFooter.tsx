@@ -3,13 +3,15 @@ import { Store } from '../store';
 
 // TODO: import DefaultButton, Stack, and Text
 
+import { DefaultButton, Text, Stack } from 'office-ui-fabric-react';
+
 interface TodoFooterProps {
   clear: () => void;
   todos: Store['todos'];
 }
 
 export const TodoFooter = (props: TodoFooterProps) => {
-  const itemCount = Object.keys(props.todos).filter(id => !props.todos[id].completed).length;
+  const itemCount = Object.keys(props.todos).filter((id) => !props.todos[id].completed).length;
 
   // TODO:
   // 1. replace the <footer> with the Fabric control <Stack>
@@ -17,13 +19,13 @@ export const TodoFooter = (props: TodoFooterProps) => {
   // 3. replace the <button> with Fabric control <DefaultButton>
 
   return (
-    <footer>
-      <span>
+    <Stack>
+      <Text>
         {itemCount} item{itemCount <= 1 ? '' : 's'} left
-      </span>
-      <button onClick={() => props.clear()} className="button">
+      </Text>
+      <DefaultButton onClick={() => props.clear()} className="button">
         Clear Completed
-      </button>
-    </footer>
+      </DefaultButton>
+    </Stack>
   );
 };

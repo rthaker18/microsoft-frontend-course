@@ -47,9 +47,9 @@
     "tslint": "^5.13.0",
     "typescript": "^3.3.3",
     "uuid": "^3.3.2",
-    "webpack": "^4.28.4",
-    "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.14"
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
     "@uifabric/fluent-theme": "^0.14.1",

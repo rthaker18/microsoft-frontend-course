@@ -1,14 +1,28 @@
 import React from 'react';
 import { Todos } from '../TodoApp.types';
 
-export const TodoFooter = props => {
-  const itemCount = Object.keys(props.todos).filter(id => !props.todos[id].completed).length;
+export const TodoFooter = (props: TodoFooterProps) => {
+  const itemCount = Object.keys(props.todos).filter((id) => !props.todos[id].completed).length;
+  const _onClick = () => {
+    props.clear();
+  };
   return (
     <footer>
       <span>
         {itemCount} item{itemCount === 1 ? '' : 's'} left
       </span>
-      <button className="submit">Clear Completed</button>
+      <button className="submit" onClick={_onClick}>
+        Clear Completed
+      </button>
     </footer>
   );
+};
+
+export interface TodoFooterProps {
+  clear: () => void;
+  todos: Todos;
+}
+
+export const _onClick = (props: TodoFooterProps) => {
+  props.clear;
 };
