@@ -7,8 +7,8 @@ import { connect } from 'react-redux';
 // TODO: these ?'s after the keys of an interface makes it optional
 // and can be removed when you finished connecting this component
 interface TodoHeaderProps {
-  addTodo?: (label: string) => void;
-  setFilter?: (filter: FilterTypes) => void;
+  addTodo: (label: string) => void;
+  setFilter: (filter: FilterTypes) => void;
 }
 
 interface TodoHeaderState {
@@ -25,7 +25,9 @@ class TodoHeader extends React.Component<TodoHeaderProps, TodoHeaderState> {
     return (
       <Stack gap={10}>
         <Stack horizontal horizontalAlign="center">
-          <Text variant="xxLarge">todos <Text variant="mediumPlus">(2.6 exercise)</Text></Text>
+          <Text variant="xxLarge">
+            todos <Text variant="mediumPlus">(2.6 exercise)</Text>
+          </Text>
         </Stack>
 
         <Stack horizontal gap={10}>
@@ -34,12 +36,12 @@ class TodoHeader extends React.Component<TodoHeaderProps, TodoHeaderState> {
               placeholder="What needs to be done?"
               value={this.state.labelInput}
               onChange={this.onChange}
-              styles={props => ({
+              styles={(props) => ({
                 ...(props.focused && {
                   field: {
-                    backgroundColor: '#c7e0f4'
-                  }
-                })
+                    backgroundColor: '#c7e0f4',
+                  },
+                }),
               })}
             />
           </Stack.Item>
@@ -82,5 +84,16 @@ class TodoHeader extends React.Component<TodoHeaderProps, TodoHeaderState> {
     // HINT: look at what the component needed from the props interface
   })
 */
-const ConnectedTodoHeader = connect()(TodoHeader);
+const ConnectedTodoHeader = connect(
+  (state) => ({
+    // TODO: mapping for state
+    // HINT: look at what the component needed from the props interface
+  }),
+  (dispatch) => ({
+    // TODO: mapping for dispatch actions
+    // HINT: look at what the component needed from the props interface
+    addTodo: (label) => dispatch(actions.addTodo(label)),
+    setFilter: (filter) => dispatch(actions.setFilter(filter)),
+  })
+)(TodoHeader);
 export { ConnectedTodoHeader as TodoHeader };

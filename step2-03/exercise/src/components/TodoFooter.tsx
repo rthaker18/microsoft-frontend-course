@@ -8,7 +8,7 @@ interface TodoFooterProps {
 }
 
 export const TodoFooter = (props: TodoFooterProps) => {
-  const itemCount = Object.keys(props.todos).filter(id => !props.todos[id].completed).length;
+  const itemCount = Object.keys(props.todos).filter((id) => !props.todos[id].completed).length;
 
   // TODO: play around with the DefaultButton component below with a "styles" prop
   // - try it with an object: styles={{ ... }}
@@ -18,7 +18,14 @@ export const TodoFooter = (props: TodoFooterProps) => {
       <Text>
         {itemCount} item{itemCount === 1 ? '' : 's'} left
       </Text>
-      <DefaultButton onClick={() => props.clear()}>Clear Completed</DefaultButton>
+      <DefaultButton
+        onClick={() => props.clear()}
+        styles={{
+          root: { fontStyle: 'oblique' },
+        }}
+      >
+        Clear Completed
+      </DefaultButton>
     </Stack>
   );
 };
